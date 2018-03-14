@@ -1,0 +1,32 @@
+final int TR_EQUILATERAL = 1;
+final int TR_ISOSCELES = 2;
+final int TR_ORDYNARY = 4;
+final int TR_RECTANGULAR = 8;
+
+1. Positive checks
+    a) Check the validation of a correct regular triangle (+ sides reshuffle); correct type = 4
+    b) Check the validation of a correct isosceles triangle (+ sides reshuffle); correct type = 2
+    c) Check the validation of a correct equilateral triangle; correct type = 3 (as equilateral triangle is isosceles by definition)
+    d) Check the validation of a correct rectangular triangle (+ sides reshuffle); correct type = 8
+    e) Check the validation of a correct rectangular and isosceles triangle (+ sides reshuffle); correct type = 10 (8 as rectangular + 2 as isosceles)
++ Thoughts:
+  • it's useless to check incorrect types of passed parameters (char, String, ...) as compiler handles it by itself
+  • the square of a valid triangle will always be counted correctly while square formula is correct
+
+2. Negative checks
+    a) Check that exception is caused under an attempt to validate incorrect triangle:
+        - the sum of two sides is less than the 3d side (+ sides reshuffle)
+        - the sum of two sides is equal to the 3d side (+ sides reshuffle)
+        - one or more null side (+ sides reshuffle)
+        - one or more negative side (+ sides reshuffle)
+        - one or more NaN side (+ sides reshuffle)
+        - one or more infinity side (+ sides reshuffle)
+    b) Check that exception is caused under an attempt to count the square of incorrect triangle:
+        - the sum of two sides is less than the 3d side (+ sides reshuffle)
+        - the sum of two sides is equal to the 3d side (+ sides reshuffle)
+        - one or more null side (+ sides reshuffle)
+        - one or more negative side (+ sides reshuffle)
+        - one or more NaN side (+ sides reshuffle)
+        - one or more infinity side (+ sides reshuffle)
++ Thoughts:
+  • checks for NaN and infinities are not as important as checks for sums of sides, but they're added just in case we'll have a really angry and harmful user :)
